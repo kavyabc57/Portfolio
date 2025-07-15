@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kavya - Front-End Developer Portfolio</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">  
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.8;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #2c3e50;
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand, .nav-link {
+            color: #ecf0f1 !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #3498db !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 90vh;
+            background: linear-gradient(120deg, #3498db, #8e44ad);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            animation: slideIn 1s ease;
+        }
+        .hero-content p {
+            font-size: 1.4rem;
+            font-weight: 300;
+            margin-bottom: 25px;
+        }
+        .hero-content .btn {
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            background: #fff;
+            color: #2c3e50;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        .hero-content .btn:hover {
+            background: #3498db;
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateY(-30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 80px 0;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background: #3498db;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* About Section */
+        #about {
+            background: #fff;
+        }
+        #about p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #7f8c8d;
+        }
+
+        /* Skills Section */
+        #skills {
+            background: #ecf0f1;
+        }
+        .skill-box {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .skill-box:hover {
+            transform: translateY(-5px);
+            cursor: pointer;
+        }
+        .skill-box h5 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .skill-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .skill-box ul li {
+            font-size: 1rem;
+            color: #7f8c8d;
+            padding: 5px 0;
+        }
+
+        /* Projects Section */
+        #projects {
+            background: #fff;
+        }
+        .project-card {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        .project-card .card-body {
+            padding: 20px;
+        }
+        .project-card h5 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        .project-card p {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
+        /* Experience Section */
+        #experience {
+            background: #ecf0f1;
+        }
+        .experience-item {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+        .experience-item h5 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        .experience-item p {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(120deg, #3498db, #8e44ad);
+            color: #fff;
+            text-align: center;
+        }
+        #contact a {
+            color: #fff;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        #contact a:hover {
+            color: #ecf0f1;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .project-card, .skill-box, .experience-item {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Kavya B C</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1>Kavya B C</h1>
+            <p>B.E. Electronics & Communication | Front-End Developer in Training</p>
+            <a href="#projects" class="btn">Explore My Work</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p>Dedicated B.E. (Electronics & Communication) graduate with experience in IT support and a strong interest in front-end development. Currently pursuing a React JS course at DCT Academy to build expertise in web application development. Seeking to apply technical skills and problem-solving abilities in a dynamic team environment.</p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="skill-box">
+                        <h5>Technologies</h5>
+                        <ul>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>Git</li>
+                            <li>Bootstrap 5</li>
+                            <li>ReactJS</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="skill-box">
+                        <h5>Tools</h5>
+                        <ul>
+                            <li>Chrome Developer Tools</li>
+                            <li>Visual Studio Code</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="skill-box">
+                        <h5>Languages</h5>
+                        <ul>
+                            <li>English</li>
+                            <li>Kannada</li>
+                            <li>Hindi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <div class="card-body">
+                            <h5>Movie App</h5>
+                            <p>A front-end app where users can add movies and rankings through a form and list them. Includes a search feature for added movies.</p>
+                            <p><strong>Packages:</strong> react, react-dom, react-fins, bootstrap</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <div class="card-body">
+                            <h5>Simple To-Do List Application</h5>
+                            <p>A React JS app developed during DCT Academy training to manage state and create reusable components with basic styling.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <div class="card-body">
+                            <h5>Personal Portfolio Website</h5>
+                            <p>A self-initiated responsive website using HTML and CSS, focused on clean design and cross-browser compatibility.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="experience-item">
+                        <h5>Anmerkung Solutions Pvt. Ltd.</h5>
+                        <p><strong>1 Dec 2021 - 31 Dec 2024</strong></p>
+                        <p>Provided IT support, leveraging troubleshooting and technical skills in a professional environment.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="experience-item">
+                        <h5>Trainee Software Developer - DCT Academy</h5>
+                        <p><strong>1 Jan 2021 - Present</strong></p>
+                        <p>Currently training in React JS to develop single-page applications, focusing on front-end development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <p>Email: <a href="mailto:Kavyabc57@gmail.com">Kavyabc57@gmail.com</a></p>
+            <p>Phone: +91 74111 82065</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Kavya | B.E. (E&C) VTU 2018 | Built with HTML5, CSS3, Bootstrap 5</p>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
